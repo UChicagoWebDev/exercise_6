@@ -9,7 +9,7 @@ function createChat() {
 function goToChat() {
   document.querySelector(".hero").style.display = "none";
   document.querySelector(".auth").style.display = "none";
-  document.querySelector(".chat").style.display = "grid";
+  document.querySelector(".chat").style.display = "block";
 }
 
 function goToIndex() {

@@ -10,6 +10,9 @@
 <body>
 
 <div class="hero container">
+  <div style="text-align: right">
+    <button onclick="goToAuth();">Login and Signup</button>
+  </div>
   <hero>
     <logo>
       <img id="tv" src="static/tv.jpeg">
@@ -18,20 +21,22 @@
     <h1>Watch Party</h1>
     <button value="create">Create a Chat!</button>
   </hero>
+  <ul class="chat_list">
+    <button onclick="goToChat();">Chat 1</button>
+    <button onclick="goToChat();">Chat 2</button>
+  </ul>
 </div>
 
 <div class="auth container">
-  <div class="auth">
-    <h2>Welcome to Watch Party!</h2>
-    <p>Enter a username</p>
-    <input id="username"></input>
-    <button>Update</button>
-  </div>
+  <h2>Welcome to Watch Party!</h2>
+  <p>Enter a username</p>
+  <input id="username"></input>
+  <button onclick="goToIndex();">Update</button>
 </div>
 
 <div class="chat">
   <div class="header">
-    <h2><a href="/">Watch Party</a></h2>
+    <h2><a href="#" onclick="goToIndex();">Watch Party</a></h2>
     <invite>
       <p>Invite users to this chat at:</p>
       <a href="#" id="invite link">link</a>

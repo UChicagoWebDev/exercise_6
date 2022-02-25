@@ -15,7 +15,7 @@ body {
 hero {
   margin: auto;
   width: 600px;
-  display: none; /* display: grid; */
+  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr 1fr;
 }
@@ -123,8 +123,11 @@ hero button {
   display: none;
 }
 
+.chat {
+  display: none;
+}
+
 .chat_interface {
-  /* display: none; */
   display: grid;
   grid-template-columns: 1fr 2fr;
   height: 100%;
