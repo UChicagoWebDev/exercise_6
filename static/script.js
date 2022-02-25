@@ -6,6 +6,24 @@ function createChat() {
 
 }
 
+function goToChat() {
+  document.querySelector(".hero").style.display = "none";
+  document.querySelector(".auth").style.display = "none";
+  document.querySelector(".chat").style.display = "grid";
+}
+
+function goToIndex() {
+  document.querySelector(".auth").style.display = "none";
+  document.querySelector(".chat").style.display = "none";
+  document.querySelector(".hero").style.display = "block";
+}
+
+function goToAuth() {
+  document.querySelector(".chat").style.display = "none";
+  document.querySelector(".hero").style.display = "none";
+  document.querySelector(".auth").style.display = "block";
+}
+
 /* For chat.html */
 
 // TODO: Fetch the list of existing chat messages.
