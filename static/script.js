@@ -67,6 +67,12 @@ repeatPasswordField.addEventListener("input", checkPasswordRepeat);
 
 // On page load, show the appropriate page and hide the others
 
+
+
+// SUGGESTION: This design pattern can make it easier to manage what we show to
+//             the user when. You can use it, or delete the below and do 
+//             something completely different.
+
 let showOnly = (element) => {
   CURRENT_ROOM = 0;
 
@@ -108,9 +114,9 @@ let router = () => {
   // ..
 }
 
-window.addEventListener("DOMContentLoaded", router);
-window.addEventListener("popstate", router);
-
+// TODO: Call router() when the user navigates in our app, to show them the 
+//       right content. When else do we need to check the URL and decide what
+//       to show the user?
 
 setInterval(500, () => {
   // If we're not in a room, don't query for messages
