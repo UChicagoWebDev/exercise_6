@@ -17,7 +17,7 @@
       <div class="loggedIn"> <!-- TODO: Show me only to logged-in users -->
         <a class="welcomeBack">
           <span class="username">Welcome back, {{ Username }}!</span>
-          <span class="material-symbols-outlined md-18">person</span></a>
+          <span class="material-symbols-outlined md-18">person</span>
         </a>
       </div>
     </div>
@@ -60,15 +60,14 @@
     <div class="auth container">
       <h2>Welcome to Watch Party!</h2>
       <div class="alignedForm">
-        <label for="username">Username: </label>
-        <input name="username" value="{{ username }}">
+        <label for="update_username">Username: </label>
+        <input id="update_username" value="{{ Username }}">
         <button>update</button>
-        <label for="password">Password: </label>
-        <input type="password" name="password" value="{{ password }}">
+        <label for="update_password">Password: </label>
+        <input type="password" id="update_password">
         <button>update</button>
-        <label for="repeatPassword">Repeat: </label>
-        <input type="password" name="repeatPassword" value="{{ password }}">
-        <error>Passwords don't match</error>
+        <label for="repeat_password">Repeat: </label>
+        <input type="password" id="repeat_password">
         <button class="exit goToSplash">Cool, let's go!</button>
         <button class="exit logout">Log out</button>
       </div>
@@ -85,11 +84,11 @@
     <div class="auth container">
       <h3>Enter your username and password to log in:</h3>
       <div class="alignedForm login">
-        <label for="username">Username</label>
-        <input name="username"></input>
+        <label for="login_username">Username</label>
+        <input id="login_username"></input>
         <button>Login</button>
-        <label for="password">Password</label>
-        <input type="password" name="password">
+        <label for="login_password">Password</label>
+        <input type="password" id="login_password">
       </div>
       <div class="failed"> <!-- TODO: Hide me by default. Show only on failed login attempts -->
         <div class="message">

@@ -5,26 +5,39 @@ const LOGIN = document.querySelector(".login");
 const ROOM = document.querySelector(".room");
 
 // Custom validation on the password reset fields
-const passwordField = document.querySelector(".profile input[name=password]");
-const repeatPasswordField = document.querySelector(".profile input[name=repeatPassword]");
+const passwordField = document.querySelector("#update_password");
+const repeatPasswordField = document.querySelector("#repeat_password");
+
 const repeatPasswordMatches = () => {
-  const p = document.querySelector(".profile input[name=password]").value;
-  const r = repeatPassword.value;
+  const p = passwordField.value;
+  const r = repeatPasswordField.value;
   return p == r;
 };
 
 const checkPasswordRepeat = () => {
-  const passwordField = document.querySelector(".profile input[name=password]");
-  if(passwordField.value == repeatPasswordField.value) {
-    repeatPasswordField.setCustomValidity("");
-    return;
+  const p = passwordField.value;
+
+  if(p.length < 5) {
+    passwordField.setCustomValidity("Password must be at least 5 characters long");
+  } else if (p == "12345") {
+    passwordField.setCustomValidity("That's the kind of password an idiot would have on his luggage!");
   } else {
-    repeatPasswordField.setCustomValidity("Password doesn't match");
+    passwordField.setCustomValidity("");
+    if(passwordField.value != repeatPasswordField.value) {
+      repeatPasswordField.setCustomValidity("Password doesn't match");
+    } else {
+      repeatPasswordField.setCustomValidity("");
+    }
   }
+  passwordField.reportValidity();
+  repeatPasswordField.reportValidity();
 }
+
+let CURRENT_ROOM = 0;
 
 passwordField.addEventListener("input", checkPasswordRepeat);
 repeatPasswordField.addEventListener("input", checkPasswordRepeat);
+
 
 // TODO:  On page load, read the path and whether the user has valid credentials:
 //        - If they ask for the splash page ("/"), display it
@@ -53,3 +66,55 @@ repeatPasswordField.addEventListener("input", checkPasswordRepeat);
 //        (Hint: https://developer.mozilla.org/en-US/docs/Web/API/setInterval#return_value)
 
 // On page load, show the appropriate page and hide the others
+
+let showOnly = (element) => {
+  CURRENT_ROOM = 0;
+
+  SPLASH.classList.add("hide")
+  PROFILE.classList.add("hide");
+  LOGIN.classList.add("hide");
+  ROOM.classList.add("hide");
+
+  element.classList.remove("hide");
+}
+
+// Show me a new "page"
+let router = () => {
+  let path = window.location.pathname;
+
+
+  if(path == "/") {
+    showOnly(SPLASH);
+
+  }
+  else if(path == "/profile"){
+    showOnly(PROFILE);
+  }
+  else if(path.startsWith("/room/")) {
+    showOnly(ROOM);
+
+    // get the room id
+    CURRENT_ROOM = 4;
+
+    // ...
+  }
+  else if(path == "/login") {
+    showOnly(LOGIN);
+  } 
+  else {
+    // show a 404?
+    console.log("I don't know how we got to "+pathname+", but something has gone wrong");
+  }
+  // ..
+}
+
+window.addEventListener("DOMContentLoaded", router);
+window.addEventListener("popstate", router);
+
+
+setInterval(500, () => {
+  // If we're not in a room, don't query for messages
+  if (CURRENT_ROOM == 0) return;
+
+  fetch("/api/messages/room/"+CURRENT_ROOM)
+});
