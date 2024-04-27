@@ -15,20 +15,20 @@ const repeatPasswordMatches = () => {
 };
 
 const checkPasswordRepeat = () => {
-  if(passwordField.value.length < 5) {
+  const p = passwordField.value;
+
+  if(p.length < 5) {
     passwordField.setCustomValidity("Password must be at least 5 characters long");
-    passwordField.reportValidity();
-    return;
+  } else if (p == "12345") {
+    passwordField.setCustomValidity("That's the kind of password an idiot would have on his luggage!");
   } else {
     passwordField.setCustomValidity("");
+    if(passwordField.value != repeatPasswordField.value) {
+      repeatPasswordField.setCustomValidity("Password doesn't match");
+    } else {
+      repeatPasswordField.setCustomValidity("");
+    }
   }
-
-  if(passwordField.value != repeatPasswordField.value) {
-    repeatPasswordField.setCustomValidity("Password doesn't match");
-  } else {
-    repeatPasswordField.setCustomValidity("");
-  }
-
   passwordField.reportValidity();
   repeatPasswordField.reportValidity();
 }
