@@ -42,7 +42,9 @@ One point each for:
 - Make all HTTP requests after the page load with `fetch` calls to API endpoints
   that return JSON. Prefix API routes with `/api`.
 - Users can update their name and password, create and rename rooms, and post
-  messages.
+  messages. Replace every double curly brace `{{}}` in `index.html` with values 
+  set by your `script.js`. HINT: For curly braces inside a block of text, it may 
+  be helpful to wrap them in a `<span>` first.
 - Visiting a screen pushes its URL to the navigation bar and the browser
   history. Rooms have their own unique URLs.
 - Opening `/`, `/login`, or `/profile` in a new browser window opens the app to

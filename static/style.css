@@ -80,18 +80,16 @@ button:hover {
   margin: 6px;
 }
 
-.alignedForm input:invalid {
-  border: 1px dashed lightcoral;
-  border-radius: 1px;
+.alignedForm input {
+  border: 1px solid gray;
+  border-radius: 2px;
 }
 
-.alignedForm error {
-  color: gray;
-  display: none;
+.alignedForm input:invalid {
+  outline: none;
+  box-shadow: 0 0 3px 3px lightcoral;
 }
-.alignedForm input:invalid ~ error {
-  display: inline;
-}
+
 
 .alignedForm button {
   margin-right: auto;

@@ -5,22 +5,32 @@ const LOGIN = document.querySelector(".login");
 const ROOM = document.querySelector(".room");
 
 // Custom validation on the password reset fields
-const passwordField = document.querySelector(".profile input[name=password]");
-const repeatPasswordField = document.querySelector(".profile input[name=repeatPassword]");
+const passwordField = document.querySelector("#update_password");
+const repeatPasswordField = document.querySelector("#repeat_password");
+
 const repeatPasswordMatches = () => {
-  const p = document.querySelector(".profile input[name=password]").value;
-  const r = repeatPassword.value;
+  const p = passwordField.value;
+  const r = repeatPasswordField.value;
   return p == r;
 };
 
 const checkPasswordRepeat = () => {
-  const passwordField = document.querySelector(".profile input[name=password]");
-  if(passwordField.value == repeatPasswordField.value) {
-    repeatPasswordField.setCustomValidity("");
+  if(passwordField.value.length < 5) {
+    passwordField.setCustomValidity("Password must be at least 5 characters long");
+    passwordField.reportValidity();
     return;
   } else {
-    repeatPasswordField.setCustomValidity("Password doesn't match");
+    passwordField.setCustomValidity("");
   }
+
+  if(passwordField.value != repeatPasswordField.value) {
+    repeatPasswordField.setCustomValidity("Password doesn't match");
+  } else {
+    repeatPasswordField.setCustomValidity("");
+  }
+
+  passwordField.reportValidity();
+  repeatPasswordField.reportValidity();
 }
 
 let CURRENT_ROOM = 0;
